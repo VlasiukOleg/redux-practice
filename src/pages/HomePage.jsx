@@ -1,3 +1,5 @@
+import { Counter } from 'components/Counter/Counter';
+
 export const Home = () => {
-  return <div>React Practise</div>;
+  return <Counter step={5} />;
 };

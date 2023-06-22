@@ -1,28 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { CounterWrap } from './Counter.styled';
 
-export const Counter = ({ step }) => {
-  const [value, setValue] = useState(5);
-  const [counterClick, setcounterClick] = useState(0);
+import { useDispatch, useSelector } from 'react-redux';
+import { decreamentValue, increamentValue } from 'redux/actions';
+
+import { getStep, getTotal } from 'redux/selectors';
+
+export const Counter = () => {
+  const total = useSelector(getTotal);
+  const step = useSelector(getStep);
+
+  const dispatch = useDispatch();
+  // const [value, setValue] = useState(5);
+  // const [counterClick, setcounterClick] = useState(0);
 
   const onIncreament = () => {
     console.log('Click');
-    setValue(state => state + step);
-    setcounterClick(state => state + 1);
+    dispatch(increamentValue(step));
+    // setValue(state => state + step);
+    // setcounterClick(state => state + 1);
   };
 
   const onDecrement = () => {
-    setValue(state => state - step);
-    setcounterClick(state => state + 1);
+    dispatch(decreamentValue(step));
+    // setValue(state => state - step);
+    // setcounterClick(state => state + 1);
   };
 
-  useEffect(() => {
-    document.title = `Всього клікнули ${counterClick} разів`;
-  }, [counterClick]);
+  // useEffect(() => {
+  //   document.title = `Всього клікнули ${counterClick} разів`;
+  // }, [counterClick]);
 
   return (
     <CounterWrap>
-      <span>{value}</span>
+      <span>{total}</span>
       <div>
         <button type="button" onClick={onIncreament}>
           Increament {step}
