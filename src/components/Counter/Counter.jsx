@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CounterWrap } from './Counter.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { decreamentValue, increamentValue } from 'redux/actions';
+import { decrementValue, incrementValue } from 'redux/actions';
 
 import { getStep, getTotal } from 'redux/selectors';
 
@@ -14,15 +14,15 @@ export const Counter = () => {
   // const [value, setValue] = useState(5);
   // const [counterClick, setcounterClick] = useState(0);
 
-  const onIncreament = () => {
+  const onIncrement = () => {
     console.log('Click');
-    dispatch(increamentValue(step));
+    dispatch(incrementValue(step));
     // setValue(state => state + step);
     // setcounterClick(state => state + 1);
   };
 
   const onDecrement = () => {
-    dispatch(decreamentValue(step));
+    dispatch(decrementValue(step));
     // setValue(state => state - step);
     // setcounterClick(state => state + 1);
   };
@@ -35,7 +35,7 @@ export const Counter = () => {
     <CounterWrap>
       <span>{total}</span>
       <div>
-        <button type="button" onClick={onIncreament}>
+        <button type="button" onClick={onIncrement}>
           Increament {step}
         </button>
         <button type="button" onClick={onDecrement}>
