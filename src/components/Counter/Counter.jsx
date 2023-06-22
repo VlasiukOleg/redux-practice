@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import { CounterWrap } from './Counter.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
