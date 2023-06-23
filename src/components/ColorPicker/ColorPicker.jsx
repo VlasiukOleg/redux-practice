@@ -1,9 +1,19 @@
-import React, { useState, memo } from 'react';
+import React, { memo } from 'react';
 import { ColorPickerWrap } from './ColorPicker.styled';
 import { ColorPickerBtn } from './ColorPicker.styled';
 
-export const ColorPicker = memo(({ colors }) => {
-  const [activeBtnIndex, setActiveBtnIndex] = useState(0);
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useDispatch } from 'react-redux';
+import { setActiveBtnIndex } from 'redux/colorpicker/colorpickerSlice';
+import { getActiveBtnIndex, getColors } from 'redux/colorpicker/selectors';
+
+export const ColorPicker = memo(() => {
+  const dispatch = useDispatch();
+
+  const colors = useSelector(getColors);
+  const activeBtnIndex = useSelector(getActiveBtnIndex);
+
+  console.log(colors);
 
   const { label } = colors[activeBtnIndex];
 
@@ -18,7 +28,7 @@ export const ColorPicker = memo(({ colors }) => {
           color={color}
           index={index}
           state={activeBtnIndex}
-          onClick={() => setActiveBtnIndex(index)}
+          onClick={() => dispatch(setActiveBtnIndex(index))}
         ></ColorPickerBtn>
       ))}
     </ColorPickerWrap>

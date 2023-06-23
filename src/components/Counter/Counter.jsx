@@ -6,13 +6,19 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { decrementValue, incrementValue } from 'redux/actions';
 
-import { increment, decrement, counterClickBtn } from 'redux/counterSlice';
+import {
+  increment,
+  decrement,
+  counterClickBtn,
+} from 'redux/counter/counterSlice';
 
-import { getStep, getTotal, getCounterClick } from 'redux/selectors';
+import { getStep, getTotal, getCounterClick } from 'redux/counter/selectors';
 
 export const Counter = () => {
   const total = useSelector(getTotal);
   const step = useSelector(getStep);
+
+  console.log(step);
   const counterClick = useSelector(getCounterClick);
 
   const dispatch = useDispatch();

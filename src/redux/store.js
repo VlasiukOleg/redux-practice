@@ -1,12 +1,23 @@
-// import { createStore } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 
-import { counterReducer } from './counterSlice';
+import { counterReducer } from './counter/counterSlice';
+// import { colorPickerReducer } from './colorpicker/colorpickerSlice';
 
-// import { devToolsEnhancer } from '@redux-devtools/extension';
+// Працює лише по одному так
+// export const store = configureStore({
+//   reducer: colorPickerReducer,
+// });
 
-// const enchancer = devToolsEnhancer();
-
+// Чи так
 export const store = configureStore({
   reducer: counterReducer,
 });
+
+// Чому так не працює??
+
+// export const store = configureStore({
+//   reducer: {
+//     counter: colorPickerReducer,
+//     colorpicker: counterReducer,
+//   },
+// });
