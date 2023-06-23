@@ -1,5 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
 const counterInitialState = {
   total: 0,
   step: 10,
@@ -22,6 +25,18 @@ export const counterSlice = createSlice({
   },
 });
 
-export const counterReducer = counterSlice.reducer;
+const persistConfig = {
+  key: 'counter',
+  storage,
+  // Save only value total to LocalStorage
+  whitelist: ['total'],
+};
+
+export const counterReducer = persistReducer(
+  persistConfig,
+  counterSlice.reducer
+);
+
+// export const counterReducer = counterSlice.reducer;
 
 export const { increment, decrement, counterClickBtn } = counterSlice.actions;

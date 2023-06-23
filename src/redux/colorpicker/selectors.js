@@ -1,2 +1,2 @@
-export const getColors = state => state.colors;
-export const getActiveBtnIndex = state => state.activeBtnIndex;
+export const getColors = state => state.colorpicker.colors;
+export const getActiveBtnIndex = state => state.colorpicker.activeBtnIndex;

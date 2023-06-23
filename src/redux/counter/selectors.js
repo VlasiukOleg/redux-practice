@@ -1,3 +1,3 @@
-export const getTotal = state => state.total;
-export const getStep = state => state.step;
-export const getCounterClick = state => state.counterClick;
+export const getTotal = state => state.counter.total;
+export const getStep = state => state.counter.step;
+export const getCounterClick = state => state.counter.counterClick;
