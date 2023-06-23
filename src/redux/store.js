@@ -1,9 +1,12 @@
-import { createStore } from 'redux';
+// import { createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 
-import { counterReducer } from './reducer';
+import { counterReducer } from './counterSlice';
 
-import { devToolsEnhancer } from '@redux-devtools/extension';
+// import { devToolsEnhancer } from '@redux-devtools/extension';
 
-const enchancer = devToolsEnhancer();
+// const enchancer = devToolsEnhancer();
 
-export const store = createStore(counterReducer, enchancer);
+export const store = configureStore({
+  reducer: counterReducer,
+});

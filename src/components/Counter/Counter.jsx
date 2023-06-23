@@ -1,14 +1,19 @@
 // import React, { useEffect, useState } from 'react';
 import { CounterWrap } from './Counter.styled';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { decrementValue, incrementValue } from 'redux/actions';
+import { useEffect } from 'react';
 
-import { getStep, getTotal } from 'redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+// import { decrementValue, incrementValue } from 'redux/actions';
+
+import { increment, decrement, counterClickBtn } from 'redux/counterSlice';
+
+import { getStep, getTotal, getCounterClick } from 'redux/selectors';
 
 export const Counter = () => {
   const total = useSelector(getTotal);
   const step = useSelector(getStep);
+  const counterClick = useSelector(getCounterClick);
 
   const dispatch = useDispatch();
   // const [value, setValue] = useState(5);
@@ -16,20 +21,22 @@ export const Counter = () => {
 
   const onIncrement = () => {
     console.log('Click');
-    dispatch(incrementValue(step));
+    dispatch(increment(step));
+    dispatch(counterClickBtn());
     // setValue(state => state + step);
     // setcounterClick(state => state + 1);
   };
 
   const onDecrement = () => {
-    dispatch(decrementValue(step));
+    dispatch(decrement(step));
+    dispatch(counterClickBtn());
     // setValue(state => state - step);
     // setcounterClick(state => state + 1);
   };
 
-  // useEffect(() => {
-  //   document.title = `Всього клікнули ${counterClick} разів`;
-  // }, [counterClick]);
+  useEffect(() => {
+    document.title = `Всього клікнули ${counterClick} разів`;
+  }, [counterClick]);
 
   return (
     <CounterWrap>
